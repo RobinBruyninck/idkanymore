@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NETLIFY = "true"
+  NODE_VERSION = "20.18.1"
+
+[[headers]]
+  for = "/portfolio.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=31536000, immutable"
+    Accept-Ranges = "bytes"
