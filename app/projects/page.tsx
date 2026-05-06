@@ -9,7 +9,20 @@ export default function ProjectsPage() {
       className="relative flex min-h-[100dvh] flex-col overflow-x-hidden bg-white px-4 py-6 text-black md:px-8 md:py-8"
       style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
     >
-      <h1 className="pointer-events-none relative z-40 mx-auto flex w-full max-w-[1600px] flex-col justify-between pl-[6%] text-[clamp(2.8rem,16vw,5.6rem)] font-black uppercase leading-[0.76] tracking-[-0.065em] md:h-[84vh] md:pl-[8%] md:text-[clamp(3.2rem,15vw,11rem)]">
+      {/* Mobile-only hero */}
+      <div className="relative z-40 mx-auto w-full max-w-[1600px] px-4 md:hidden">
+        <div className="mobile-hero bg-white/0 py-6">
+          <h1 className="mobile-hero-title text-[28px] font-black uppercase leading-tight tracking-tight">
+            Projects
+          </h1>
+          <p className="mt-2 text-[13px] text-black/75">
+            A curated selection of recent work — swipe through the list below.
+          </p>
+        </div>
+      </div>
+
+      {/* Desktop hero (unchanged) */}
+      <h1 className="hidden md:flex pointer-events-none relative z-40 mx-auto flex w-full max-w-[1600px] flex-col justify-between pl-[6%] text-[clamp(2.8rem,16vw,5.6rem)] font-black uppercase leading-[0.76] tracking-[-0.065em] md:h-[84vh] md:pl-[8%] md:text-[clamp(3.2rem,15vw,11rem)]">
         <span className="block">PRO</span>
         <span className="block md:pl-[35%]">JEC</span>
         <span className="block md:pl-[66%]">TS</span>
