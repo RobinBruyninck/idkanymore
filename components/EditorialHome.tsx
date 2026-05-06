@@ -10,11 +10,11 @@ export default function EditorialHome() {
 			style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
 		>
 			<h1
-				className="group relative z-20 w-full text-left text-[clamp(2.5rem,12vw,4.8rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.04em] md:absolute md:left-0 md:right-0 md:top-0 md:px-1 md:text-[clamp(40px,4.2vw,76px)]"
+				className="group relative z-20 w-full max-w-full text-left text-[clamp(1.9rem,10vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.04em] md:max-w-none md:leading-[0.92] md:absolute md:left-0 md:right-0 md:top-0 md:px-1 md:text-[clamp(40px,4.2vw,76px)]"
 				style={{ wordSpacing: "0.18em" }}
 			>
 				<span
-					className="home-line flex w-full flex-col gap-1 transition-transform duration-500 ease-out md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[8px]"
+					className="home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[8px]"
 					style={{ animationDelay: "0ms" }}
 				>
 					<span className="whitespace-normal md:whitespace-nowrap">I’M ROBIN,</span>
@@ -22,14 +22,14 @@ export default function EditorialHome() {
 					<span className="whitespace-normal md:whitespace-nowrap">STUDENT</span>
 				</span>
 				<span
-					className="home-line flex w-full flex-col gap-1 transition-transform duration-500 ease-out delay-75 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[-6px]"
+					className="home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out delay-75 md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[-6px]"
 					style={{ animationDelay: "140ms" }}
 				>
 					<span className="whitespace-normal md:whitespace-nowrap">WORKING ACROSS</span>
 					<span className="whitespace-normal md:whitespace-nowrap">BRANDING, WEB</span>
 				</span>
 				<span
-					className="home-line flex w-full flex-col gap-1 transition-transform duration-500 ease-out delay-100 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[7px]"
+					className="home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out delay-100 md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[7px]"
 					style={{ animationDelay: "280ms" }}
 				>
 					<span className="whitespace-normal md:whitespace-nowrap">DESIGN,</span>
@@ -37,7 +37,7 @@ export default function EditorialHome() {
 					<span className="whitespace-normal md:whitespace-nowrap">DESIGN,</span>
 				</span>
 				<span
-					className="home-line flex w-full flex-col gap-1 transition-transform duration-500 ease-out delay-150 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[-5px]"
+					className="home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out delay-150 md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[-5px]"
 					style={{ animationDelay: "420ms" }}
 				>
 					<span className="whitespace-normal md:whitespace-nowrap">PRINT,</span>
@@ -52,7 +52,7 @@ export default function EditorialHome() {
 				</span>
 			</h1>
 
-			<figure className="relative mx-auto mt-6 h-[clamp(320px,62vw,460px)] w-full max-w-[420px] overflow-hidden bg-neutral-200 md:absolute md:bottom-0 md:left-[44%] md:z-10 md:mt-0 md:h-[76vh] md:w-[clamp(320px,34vw,500px)] md:max-w-none">
+			<figure className="relative mx-auto mt-8 h-[clamp(300px,55vw,420px)] w-full max-w-[100%] overflow-hidden bg-neutral-200 md:absolute md:bottom-0 md:left-[44%] md:z-10 md:mt-0 md:max-w-none md:h-[76vh] md:w-[clamp(320px,34vw,500px)]">
 				<Image
 					src="/IMG22.jpg"
 					alt="Robin portrait"
@@ -64,20 +64,20 @@ export default function EditorialHome() {
 				/>
 			</figure>
 
-			<nav className="relative z-20 mt-6 flex flex-wrap gap-x-4 gap-y-2 text-[13px] font-bold uppercase leading-[1] md:absolute md:bottom-3 md:left-3 md:mt-0 md:flex-col md:gap-y-1 md:text-[12px] md:bottom-4 md:left-4">
-				<Link href="/projects" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
-					Projects
-				</Link>
-				<Link href="/about" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
-					About
-				</Link>
-				<a href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/" target="_blank" rel="noopener noreferrer" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
-					LinkedIn
-				</a>
-				<a href="https://www.instagram.com/robinbruyninck/" target="_blank" rel="noopener noreferrer" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
-					Instagram
-				</a>
-				<Link href="/contact" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
+<nav className="relative z-20 mt-8 flex flex-wrap gap-x-3 gap-y-2 text-[12px] font-bold uppercase leading-[1] md:absolute md:bottom-3 md:left-3 md:mt-0 md:flex-col md:gap-y-1 md:gap-x-0 md:text-[12px] md:bottom-4 md:left-4">
+			<Link href="/projects" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
+				Projects
+			</Link>
+			<Link href="/about" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
+				About
+			</Link>
+			<a href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/" target="_blank" rel="noopener noreferrer" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
+				LinkedIn
+			</a>
+			<a href="https://www.instagram.com/robin-bruyninck/" target="_blank" rel="noopener noreferrer" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
+				Instagram
+			</a>
+			<Link href="/contact" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
 					Contact
 				</Link>
 			</nav>
