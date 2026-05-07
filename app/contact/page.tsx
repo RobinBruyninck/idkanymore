@@ -18,8 +18,10 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
 
     const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
+    const handleSubmit = async (e: Event) => {
+      if (e instanceof SubmitEvent) {
+        e.preventDefault()
+      }
 
       const formData = new FormData(form)
       const originalText = submitBtn.textContent
@@ -49,8 +51,8 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
       }
     }
 
-    form.addEventListener('submit', handleSubmit as EventListener)
-    return () => form.removeEventListener('submit', handleSubmit as EventListener)
+    form.addEventListener('submit', handleSubmit)
+    return () => form.removeEventListener('submit', handleSubmit)
   }, [])
 
   return (
