@@ -17,18 +17,25 @@ export default function EditorialHome() {
 						fill
 						sizes="100vw"
 						priority
-						className="object-cover object-center grayscale"
+						className="object-cover object-top grayscale"
 					/>
 				</figure>
 
-				<h1 className="text-[clamp(2.4rem,14vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.04em]">
-					ROBIN
-				</h1>
-
-				<p className="max-w-full text-[12px] font-bold uppercase leading-[1.1] tracking-[-0.02em]">
+			<p style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }} className="max-w-full text-[clamp(14px,3.5vw,18px)] font-bold uppercase leading-[1.2] tracking-[-0.02em]">
 					I'M ROBIN, A VISUAL DESIGN STUDENT WORKING ACROSS BRANDING, WEB DESIGN, EDITORIAL DESIGN, PRINT, VISUAL SYSTEMS AND IMAGE-MAKING.
 				</p>
-
+			<style>{`
+				@keyframes fadeInUp {
+					from {
+						opacity: 0;
+						transform: translateY(12px);
+					}
+					to {
+						opacity: 1;
+						transform: translateY(0);
+					}
+				}
+			`}</style>
 				<nav className="mt-auto grid grid-cols-2 gap-2 pb-1 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
 					<Link href="/projects" className="flex min-h-10 items-center border border-black px-3">
 						Projects
@@ -48,10 +55,10 @@ export default function EditorialHome() {
 						LinkedIn
 					</a>
 					<a
-						href="https://www.instagram.com/robin-bruyninck/"
+						href="https://www.instagram.com/robinbruyninck/"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="col-span-2 flex min-h-10 items-center border border-black px-3"
+						className="col-span-2 flex min-h-12 items-center justify-center border border-black px-3 text-[13px]"
 					>
 						Instagram
 					</a>
@@ -109,7 +116,7 @@ export default function EditorialHome() {
 					height={1200}
 					priority
 					sizes="(max-width: 768px) 100vw, 500px"
-					className="h-full w-full object-cover object-center grayscale"
+					className="h-full w-full object-cover object-top grayscale"
 				/>
 			</figure>
 

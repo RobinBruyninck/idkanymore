@@ -68,7 +68,7 @@ export default function ProjectsPage() {
           </p>
         </header>
 
-        <div className="pb-2">
+        <div className="pb-56">
           {mobileProjects.map((project, index) => (
             <Link
               key={project.id}
@@ -91,7 +91,7 @@ export default function ProjectsPage() {
                   {project.meta}
                 </p>
                 <p className="mt-0.5 text-[10px] font-bold uppercase leading-[1.1] tracking-[-0.01em] text-black/70">
-                  {project.place} · {project.year}
+                  {project.year}
                 </p>
                 <h2 className="mt-1.5 pr-1 text-[16px] font-black uppercase leading-[0.98] tracking-[-0.03em] break-words">
                   {project.title}
@@ -100,6 +100,24 @@ export default function ProjectsPage() {
             </Link>
           ))}
         </div>
+
+        <nav className="fixed bottom-0 left-0 right-0 z-20 grid grid-cols-2 gap-2 border-t border-black/20 bg-white px-4 py-3 md:hidden">
+          <Link href="/" className="flex min-h-10 items-center justify-center border border-black px-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
+            Home
+          </Link>
+          <Link href="/about" className="flex min-h-10 items-center justify-center border border-black px-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
+            About
+          </Link>
+          <Link href="/contact" className="flex min-h-10 items-center justify-center border border-black px-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
+            Contact
+          </Link>
+          <a href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/" target="_blank" rel="noopener noreferrer" className="flex min-h-10 items-center justify-center border border-black px-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
+            LinkedIn
+          </a>
+          <a href="https://www.instagram.com/robinbruyninck/" target="_blank" rel="noopener noreferrer" className="col-span-2 flex min-h-10 items-center justify-center border border-black px-2 text-[12px] font-bold uppercase leading-none tracking-[-0.01em]">
+            Instagram
+          </a>
+        </nav>
       </section>
 
       {/* Desktop hero (unchanged) */}

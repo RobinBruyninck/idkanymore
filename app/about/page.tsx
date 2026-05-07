@@ -83,7 +83,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <nav className="relative z-30 mt-8 flex flex-wrap gap-x-4 gap-y-2 text-[13px] font-bold uppercase leading-[1] md:absolute md:bottom-3 md:left-3 md:mt-0 md:flex-col md:gap-y-1 md:text-[12px] md:bottom-4 md:left-4">
+      <nav className="relative z-30 mt-8 flex flex-wrap justify-center gap-x-4 gap-y-2 text-[13px] font-bold uppercase leading-[1] md:absolute md:bottom-3 md:left-3 md:mt-0 md:flex-col md:gap-y-1 md:text-[12px] md:bottom-4 md:left-4 md:justify-start">
         <Link href="/" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
           Home
         </Link>
