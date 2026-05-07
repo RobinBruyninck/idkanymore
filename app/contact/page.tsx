@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect } from "react"
 import Link from "next/link"
 
 type ContactPageProps = {
@@ -8,6 +11,47 @@ type ContactPageProps = {
 
 export default function ContactPage({ searchParams }: ContactPageProps) {
   const status = searchParams?.status
+
+  useEffect(() => {
+    const form = document.getElementById('contact-form') as HTMLFormElement
+    if (!form) return
+
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+
+      const formData = new FormData(form)
+      const originalText = submitBtn.textContent
+
+      submitBtn.textContent = "Sending..."
+      submitBtn.disabled = true
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        })
+
+        const data = await response.json()
+
+        if (response.ok) {
+          alert("Success! Your message has been sent.")
+          form.reset()
+        } else {
+          alert("Error: " + data.message)
+        }
+      } catch (error) {
+        alert("Something went wrong. Please try again.")
+      } finally {
+        submitBtn.textContent = originalText
+        submitBtn.disabled = false
+      }
+    }
+
+    form.addEventListener('submit', handleSubmit as EventListener)
+    return () => form.removeEventListener('submit', handleSubmit as EventListener)
+  }, [])
 
   return (
     <main
@@ -55,34 +99,24 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
             ) : null}
 
             <form
+              id="contact-form"
               method="POST"
-              action="https://formspree.io/f/YOUR_FORM_ID"
+              action="https://api.web3forms.com/submit"
               className="w-full max-w-[760px]"
             >
+              <input type="hidden" name="access_key" value="69b70554-737d-4952-b191-7673f9fe7054" />
 
-              <p className="mb-3 text-[13px] font-semibold uppercase tracking-[0.05em] text-[#f2f2ee]">
-                Name (required)
-              </p>
-
-              <div className="grid gap-4 md:grid-cols-2">
-                <label>
-                  <span className="mb-1 block text-[11px] uppercase tracking-[0.05em] text-[#f2f2ee]/70">First Name</span>
-                  <input
-                    name="firstName"
-                    required
-                    className="h-11 w-full border-b border-[#f2f2ee]/50 bg-transparent text-[14px] text-[#f2f2ee] outline-none focus:border-[#f2f2ee]"
-                  />
-                </label>
-
-                <label>
-                  <span className="mb-1 block text-[11px] uppercase tracking-[0.05em] text-[#f2f2ee]/70">Last Name</span>
-                  <input
-                    name="lastName"
-                    required
-                    className="h-11 w-full border-b border-[#f2f2ee]/50 bg-transparent text-[14px] text-[#f2f2ee] outline-none focus:border-[#f2f2ee]"
-                  />
-                </label>
-              </div>
+              <label className="block">
+                <span className="mb-1 block text-[13px] font-semibold uppercase tracking-[0.05em] text-[#f2f2ee]">
+                  Name (required)
+                </span>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  className="h-11 w-full border-b border-[#f2f2ee]/50 bg-transparent text-[14px] text-[#f2f2ee] outline-none focus:border-[#f2f2ee]"
+                />
+              </label>
 
               <label className="mt-6 block">
                 <span className="mb-1 block text-[13px] font-semibold uppercase tracking-[0.05em] text-[#f2f2ee]">
