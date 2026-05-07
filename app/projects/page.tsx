@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image"
 import Link from "next/link"
 
@@ -10,7 +12,7 @@ export default function ProjectsPage() {
       style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
     >
       {/* Mobile-only hero */}
-      <div className="relative z-40 mx-auto w-full max-w-[1600px] px-4 md:hidden">
+      <div className="mobile-only relative z-40 mx-auto w-full max-w-[1600px] px-4">
         <div className="mobile-hero bg-white/0 py-6">
           <h1 className="mobile-hero-title text-[28px] font-black uppercase leading-tight tracking-tight">
             Projects
@@ -19,13 +21,13 @@ export default function ProjectsPage() {
       </div>
 
       {/* Desktop hero (unchanged) */}
-      <h1 className="hidden pointer-events-none relative z-40 mx-auto w-full max-w-[1600px] flex-col justify-between pl-[6%] text-[clamp(2.8rem,16vw,5.6rem)] font-black uppercase leading-[0.76] tracking-[-0.065em] md:flex md:h-[84vh] md:pl-[8%] md:text-[clamp(3.2rem,15vw,11rem)]">
+      <h1 className="desktop-only pointer-events-none relative z-40 mx-auto w-full max-w-[1600px] flex-col justify-between pl-[6%] text-[clamp(2.8rem,16vw,5.6rem)] font-black uppercase leading-[0.76] tracking-[-0.065em] md:h-[84vh] md:pl-[8%] md:text-[clamp(3.2rem,15vw,11rem)]">
         <span className="block">PRO</span>
         <span className="block md:pl-[35%]">JEC</span>
         <span className="block md:pl-[66%]">TS</span>
       </h1>
 
-      <section className="relative z-30 mt-8 grid gap-4 md:hidden">
+      <section className="mobile-only relative z-30 mt-8 grid gap-4">
         {projectItems.map((project) => (
           <Link
             key={project.id}
@@ -67,7 +69,7 @@ export default function ProjectsPage() {
 
       <Link
         href="/projects/project-1"
-        className="pointer-events-auto absolute bottom-[4%] left-[14%] z-10 hidden w-[clamp(290px,26vw,410px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995] md:block"
+        className="desktop-only pointer-events-auto absolute bottom-[4%] left-[14%] z-10 w-[clamp(290px,26vw,410px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995]"
       >
         <div className="w-full">
           <Image
@@ -85,7 +87,7 @@ export default function ProjectsPage() {
 
       <Link
         href="/projects/project-2"
-        className="pointer-events-auto absolute left-[46%] top-[8%] z-10 hidden w-[clamp(240px,32vw,460px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995] md:block"
+        className="desktop-only pointer-events-auto absolute left-[46%] top-[8%] z-10 w-[clamp(240px,32vw,460px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995]"
       >
         <div className="relative aspect-[16/9] w-full overflow-hidden">
           <Image
@@ -102,7 +104,7 @@ export default function ProjectsPage() {
 
       <Link
         href="/projects/project-3"
-        className="pointer-events-auto absolute left-[1%] top-[40px] z-0 hidden w-[clamp(350px,32vw,520px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995] md:block"
+        className="desktop-only pointer-events-auto absolute left-[1%] top-[40px] z-0 w-[clamp(350px,32vw,520px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995]"
       >
         <div className="relative aspect-[3/4] w-full overflow-hidden">
           <Image
@@ -119,7 +121,7 @@ export default function ProjectsPage() {
 
       <Link
         href="/projects/project-4"
-        className="pointer-events-auto absolute right-[6%] top-[28%] z-10 hidden w-[clamp(240px,18vw,320px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995] md:block"
+        className="desktop-only pointer-events-auto absolute right-[6%] top-[28%] z-10 w-[clamp(240px,18vw,320px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995]"
       >
         <div className="relative aspect-[3/4] w-full overflow-hidden">
           <Image
@@ -136,7 +138,7 @@ export default function ProjectsPage() {
 
       <Link
         href="/projects/project-5"
-        className="absolute bottom-[9%] left-[46%] z-20 hidden w-[clamp(240px,24vw,420px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995] md:block"
+        className="desktop-only absolute bottom-[9%] left-[46%] z-20 w-[clamp(240px,24vw,420px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995]"
       >
         <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100">
           <Image
@@ -168,6 +170,26 @@ export default function ProjectsPage() {
           Contact
         </Link>
       </nav>
+
+      <style jsx>{`
+        @media (max-width: 767px) {
+          .desktop-only {
+            display: none !important;
+          }
+          .mobile-only {
+            display: flex !important;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .mobile-only {
+            display: none !important;
+          }
+          .desktop-only {
+            display: flex !important;
+          }
+        }
+      `}</style>
     </main>
   )
 }
