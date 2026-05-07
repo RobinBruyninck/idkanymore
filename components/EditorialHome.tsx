@@ -9,7 +9,7 @@ export default function EditorialHome() {
 			className="relative h-[100dvh] overflow-hidden bg-white px-4 py-4 text-black md:h-screen md:px-0 md:py-0"
 			style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
 		>
-			<section className="relative flex h-full flex-col gap-3 overflow-hidden md:hidden">
+			<section className="relative flex h-full flex-col gap-1 overflow-hidden md:hidden">
 				<figure className="relative h-[41dvh] w-full overflow-hidden bg-neutral-200">
 					<Image
 						src="/IMG22.jpg"
@@ -23,7 +23,7 @@ export default function EditorialHome() {
 
 				<p
 					style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}
-					className="w-full max-w-full whitespace-pre-line text-[clamp(21px,6.2vw,36px)] font-bold uppercase leading-[1.01] tracking-[-0.045em]"
+					className="w-full max-w-full whitespace-pre-line text-[clamp(24px,7vw,48px)] font-bold uppercase leading-[1.01] tracking-[-0.045em]"
 				>
 					{"I'M ROBIN, A VISUAL DESIGN\nSTUDENT WORKING ACROSS\nBRANDING, WEB DESIGN,\nEDITORIAL DESIGN, PRINT,\nVISUAL SYSTEMS AND\nIMAGE-MAKING."}
 				</p>
