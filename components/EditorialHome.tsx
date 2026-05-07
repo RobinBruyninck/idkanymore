@@ -23,9 +23,9 @@ export default function EditorialHome() {
 
 				<p
 					style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}
-					className="w-full max-w-none text-[clamp(18px,5vw,28px)] font-bold uppercase leading-[1.02] tracking-[-0.04em]"
+					className="w-full max-w-[88%] whitespace-pre-line text-[clamp(17px,4.6vw,24px)] font-bold uppercase leading-[1.05] tracking-[-0.035em]"
 				>
-					I'M ROBIN, A VISUAL DESIGN STUDENT WORKING ACROSS BRANDING, WEB DESIGN, EDITORIAL DESIGN, PRINT, VISUAL SYSTEMS AND IMAGE-MAKING.
+					{"I'M ROBIN, A VISUAL DESIGN\nSTUDENT WORKING ACROSS\nBRANDING, WEB DESIGN,\nEDITORIAL DESIGN, PRINT,\nVISUAL SYSTEMS AND\nIMAGE-MAKING."}
 				</p>
 			<style>{`
 				@keyframes fadeInUp {
