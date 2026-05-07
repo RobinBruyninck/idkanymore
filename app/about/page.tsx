@@ -83,21 +83,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-  	  <nav className="relative z-30 mt-8 grid grid-cols-2 gap-2 text-[11px] font-semibold uppercase leading-none tracking-[0.03em] md:absolute md:bottom-4 md:left-4 md:mt-0 md:flex md:flex-col md:gap-y-1 md:text-[12px] md:tracking-normal">
-  	    <Link href="/" className="flex min-h-10 items-center justify-center border border-black/25 px-2 py-2 hover:text-black md:min-h-0 md:justify-start md:border-0 md:px-0 md:py-0">
+  	  <nav className="relative z-30 mt-8 flex flex-wrap justify-center gap-x-4 gap-y-2 text-[13px] font-bold uppercase leading-[1] md:absolute md:bottom-4 md:left-4 md:mt-0 md:flex-col md:gap-y-1 md:text-[12px] md:justify-start">
+  	    <Link href="/" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
           Home
         </Link>
-  	    <Link href="/projects" className="flex min-h-10 items-center justify-center border border-black/25 px-2 py-2 hover:text-black md:min-h-0 md:justify-start md:border-0 md:px-0 md:py-0">
+  	    <Link href="/projects" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
           Projects
         </Link>
-  	    <Link href="/contact" className="flex min-h-10 items-center justify-center border border-black/25 px-2 py-2 hover:text-black md:min-h-0 md:justify-start md:border-0 md:px-0 md:py-0">
+  	    <Link href="/contact" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
           Contact
         </Link>
         <a
           href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/"
           target="_blank"
           rel="noopener noreferrer"
-  	          className="flex min-h-10 items-center justify-center border border-black/25 px-2 py-2 hover:text-black md:min-h-0 md:justify-start md:border-0 md:px-0 md:py-0"
+  	          className="px-1 py-1.5 hover:text-black md:px-0 md:py-0"
         >
           LinkedIn
         </a>
@@ -105,7 +105,7 @@ export default function AboutPage() {
           href="https://www.instagram.com/robinbruyninck/"
           target="_blank"
           rel="noopener noreferrer"
-  	          className="col-span-2 flex min-h-10 items-center justify-center border border-black/25 px-2 py-2 hover:text-black md:col-span-1 md:min-h-0 md:justify-start md:border-0 md:px-0 md:py-0"
+  	          className="px-1 py-1.5 hover:text-black md:px-0 md:py-0"
         >
           Instagram
         </a>
