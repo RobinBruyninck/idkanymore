@@ -9,21 +9,26 @@ export default function EditorialHome() {
 			className="relative h-[100dvh] overflow-hidden bg-white px-4 py-4 text-black md:h-screen md:px-0 md:py-0"
 			style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
 		>
-			<section className="flex h-full flex-col gap-3 overflow-hidden md:hidden">
-				<figure className="relative h-[32dvh] w-full overflow-hidden bg-neutral-200">
+			<section className="relative flex h-full flex-col gap-3 overflow-hidden md:hidden">
+				<figure className="relative h-[41dvh] w-full overflow-hidden bg-neutral-200">
 					<Image
 						src="/IMG22.jpg"
 						alt="Robin portrait"
 						fill
 						sizes="100vw"
 						priority
-						className="object-cover object-top grayscale"
+						className="object-cover object-bottom grayscale"
 					/>
 				</figure>
 
-			<p style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }} className="max-w-full text-[clamp(14px,3.5vw,18px)] font-bold uppercase leading-[1.2] tracking-[-0.02em]">
+				<div className="absolute inset-x-4 top-[26dvh] z-20">
+					<p
+						style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}
+						className="w-full max-w-none text-[clamp(18px,5vw,28px)] font-bold uppercase leading-[1.02] tracking-[-0.04em]"
+					>
 					I'M ROBIN, A VISUAL DESIGN STUDENT WORKING ACROSS BRANDING, WEB DESIGN, EDITORIAL DESIGN, PRINT, VISUAL SYSTEMS AND IMAGE-MAKING.
-				</p>
+					</p>
+				</div>
 			<style>{`
 				@keyframes fadeInUp {
 					from {
@@ -116,7 +121,7 @@ export default function EditorialHome() {
 					height={1200}
 					priority
 					sizes="(max-width: 768px) 100vw, 500px"
-					className="h-full w-full object-cover object-top grayscale"
+					className="h-full w-full object-cover object-bottom grayscale"
 				/>
 			</figure>
 
