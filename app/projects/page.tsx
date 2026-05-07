@@ -147,7 +147,7 @@ export default function ProjectsPage() {
             alt="Artwork poster"
             width={1200}
             height={1200}
-            sizes="16vw"
+            sizes="(max-width: 768px) 100vw, 410px"
             loading="eager"
             className="h-auto w-full object-contain"
             priority
