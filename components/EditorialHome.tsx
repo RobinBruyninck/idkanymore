@@ -17,7 +17,7 @@ export default function EditorialHome() {
 						fill
 						sizes="100vw"
 						priority
-						className="object-cover object-bottom grayscale"
+						className="object-cover object-[50%_68%] grayscale"
 					/>
 				</figure>
 
