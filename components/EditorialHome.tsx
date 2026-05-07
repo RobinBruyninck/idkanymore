@@ -39,21 +39,21 @@ export default function EditorialHome() {
 					}
 				}
 			`}</style>
-				<nav className="mt-auto grid grid-cols-2 gap-2 pb-1 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
-					<Link href="/projects" className="flex min-h-10 items-center border border-black px-3">
+				<nav className="mt-auto grid grid-cols-2 gap-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
+					<Link href="/projects" className="flex min-h-10 items-center justify-center border border-black/40 px-2">
 						Projects
 					</Link>
-					<Link href="/about" className="flex min-h-10 items-center border border-black px-3">
+					<Link href="/about" className="flex min-h-10 items-center justify-center border border-black/40 px-2">
 						About
 					</Link>
-					<Link href="/contact" className="flex min-h-10 items-center border border-black px-3">
+					<Link href="/contact" className="flex min-h-10 items-center justify-center border border-black/40 px-2">
 						Contact
 					</Link>
 					<a
 						href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="flex min-h-10 items-center border border-black px-3"
+						className="flex min-h-10 items-center justify-center border border-black/40 px-2"
 					>
 						LinkedIn
 					</a>
@@ -61,7 +61,7 @@ export default function EditorialHome() {
 						href="https://www.instagram.com/robinbruyninck/"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="col-span-2 flex min-h-12 items-center justify-center border border-black px-3 text-[13px]"
+						className="col-span-2 flex min-h-10 items-center justify-center border border-black/40 px-2 text-[12px]"
 					>
 						Instagram
 					</a>
