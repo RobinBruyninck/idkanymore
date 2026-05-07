@@ -68,7 +68,7 @@ export default function ProjectsPage() {
           </p>
         </header>
 
-        <div className="pb-56">
+        <div className="pb-6">
           {mobileProjects.map((project, index) => (
             <Link
               key={project.id}
@@ -101,7 +101,7 @@ export default function ProjectsPage() {
           ))}
         </div>
 
-          <nav className="fixed bottom-0 left-0 right-0 z-20 grid grid-cols-2 gap-2 border-t border-black/20 bg-white px-4 py-3 md:hidden">
+          <nav className="mt-4 grid grid-cols-2 gap-2 border-t border-black/20 bg-white px-0 pt-3 md:hidden">
             <Link href="/" className="flex min-h-10 items-center justify-center border border-black px-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
             Home
           </Link>

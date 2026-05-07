@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server"
 
-const fallbackTo = "robin.bruyninckx@hotmail.com"
-const fallbackFrom = "Portfolio Contact <onboarding@resend.dev>"
-
 function asText(value: FormDataEntryValue | null): string {
   return typeof value === "string" ? value.trim() : ""
+}
+
+function redirectWithStatus(request: Request, status: string) {
+  return NextResponse.redirect(new URL(`/contact?status=${status}`, request.url), 303)
 }
 
 export async function POST(request: Request) {
@@ -12,7 +13,7 @@ export async function POST(request: Request) {
 
   // Basic honeypot spam guard.
   if (asText(formData.get("bot-field"))) {
-    return NextResponse.redirect(new URL("/contact?status=sent", request.url))
+    return redirectWithStatus(request, "sent")
   }
 
   const firstName = asText(formData.get("firstName"))
@@ -21,46 +22,17 @@ export async function POST(request: Request) {
   const message = asText(formData.get("message"))
 
   if (!firstName || !lastName || !email || !message) {
-    return NextResponse.redirect(new URL("/contact?status=invalid", request.url))
+    return redirectWithStatus(request, "invalid")
   }
 
-  const resendApiKey = process.env.RESEND_API_KEY
-  if (!resendApiKey) {
-    return NextResponse.redirect(new URL("/contact?status=config", request.url))
-  }
-
-  const toEmail = process.env.CONTACT_TO_EMAIL || fallbackTo
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || fallbackFrom
-
-  const subject = `New portfolio contact from ${firstName} ${lastName}`
-  const text = [
-    "New contact form submission",
-    "",
-    `Name: ${firstName} ${lastName}`,
-    `Email: ${email}`,
-    "",
-    "Message:",
+  // Submission is captured in Vercel function logs.
+  console.log("[contact-submission]", {
+    firstName,
+    lastName,
+    email,
     message,
-  ].join("\n")
-
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${resendApiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: fromEmail,
-      to: [toEmail],
-      subject,
-      text,
-      reply_to: email,
-    }),
+    createdAt: new Date().toISOString(),
   })
 
-  if (!response.ok) {
-    return NextResponse.redirect(new URL("/contact?status=error", request.url))
-  }
-
-  return NextResponse.redirect(new URL("/contact?status=sent", request.url))
+  return redirectWithStatus(request, "sent")
 }
