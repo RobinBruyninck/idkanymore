@@ -21,14 +21,12 @@ export default function EditorialHome() {
 					/>
 				</figure>
 
-				<div className="absolute inset-x-4 top-[26dvh] z-20">
-					<p
-						style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}
-						className="w-full max-w-none text-[clamp(18px,5vw,28px)] font-bold uppercase leading-[1.02] tracking-[-0.04em]"
-					>
+				<p
+					style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}
+					className="w-full max-w-none text-[clamp(18px,5vw,28px)] font-bold uppercase leading-[1.02] tracking-[-0.04em]"
+				>
 					I'M ROBIN, A VISUAL DESIGN STUDENT WORKING ACROSS BRANDING, WEB DESIGN, EDITORIAL DESIGN, PRINT, VISUAL SYSTEMS AND IMAGE-MAKING.
-					</p>
-				</div>
+				</p>
 			<style>{`
 				@keyframes fadeInUp {
 					from {
