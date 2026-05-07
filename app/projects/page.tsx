@@ -101,20 +101,30 @@ export default function ProjectsPage() {
           ))}
         </div>
 
-          <nav className="mt-4 grid grid-cols-2 gap-2 border-t border-black/20 bg-white px-0 pt-3 md:hidden">
-            <Link href="/" className="flex min-h-10 items-center justify-center px-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
+        <nav className="relative z-30 mt-8 grid grid-cols-2 gap-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em] md:absolute md:bottom-4 md:left-4 md:mt-0 md:flex md:flex-col md:gap-y-1 md:text-[12px] md:tracking-normal">
+          <Link href="/" className="flex min-h-10 items-center justify-center border border-black/40 px-2 md:min-h-0 md:justify-start md:border-0 md:px-0">
             Home
           </Link>
-            <Link href="/about" className="flex min-h-10 items-center justify-center px-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
+          <Link href="/about" className="flex min-h-10 items-center justify-center border border-black/40 px-2 md:min-h-0 md:justify-start md:border-0 md:px-0">
             About
           </Link>
-            <Link href="/contact" className="flex min-h-10 items-center justify-center px-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
+          <Link href="/contact" className="flex min-h-10 items-center justify-center border border-black/40 px-2 md:min-h-0 md:justify-start md:border-0 md:px-0">
             Contact
           </Link>
-            <a href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/" target="_blank" rel="noopener noreferrer" className="flex min-h-10 items-center justify-center px-2 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
+          <a
+            href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-10 items-center justify-center border border-black/40 px-2 md:min-h-0 md:justify-start md:border-0 md:px-0"
+          >
             LinkedIn
           </a>
-            <a href="https://www.instagram.com/robinbruyninck/" target="_blank" rel="noopener noreferrer" className="col-span-2 flex min-h-10 items-center justify-center px-2 text-[12px] font-bold uppercase leading-none tracking-[-0.01em]">
+          <a
+            href="https://www.instagram.com/robinbruyninck/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="col-span-2 flex min-h-10 items-center justify-center border border-black/40 px-2 text-[12px] md:col-span-1 md:min-h-0 md:justify-start md:border-0 md:px-0 md:text-[12px]"
+          >
             Instagram
           </a>
         </nav>
