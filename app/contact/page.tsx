@@ -1,6 +1,14 @@
 import Link from "next/link"
 
-export default function ContactPage() {
+type ContactPageProps = {
+  searchParams?: {
+    status?: string
+  }
+}
+
+export default function ContactPage({ searchParams }: ContactPageProps) {
+  const status = searchParams?.status
+
   return (
     <main
       className="relative min-h-[100dvh] overflow-x-hidden bg-[#0d0d0d] px-5 pb-24 pt-8 text-[#f2f2ee] md:px-10 md:pb-28 md:pt-10"
@@ -30,18 +38,31 @@ export default function ContactPage() {
           </div>
 
           <div className="md:col-span-8">
+            {status === "sent" ? (
+              <p className="mb-5 border border-[#f2f2ee]/35 px-4 py-3 text-[11px] uppercase tracking-[0.05em] text-[#f2f2ee]/90">
+                Thanks, your message has been sent.
+              </p>
+            ) : null}
+            {status === "invalid" ? (
+              <p className="mb-5 border border-[#f2f2ee]/35 px-4 py-3 text-[11px] uppercase tracking-[0.05em] text-[#f2f2ee]/90">
+                Please fill in all required fields.
+              </p>
+            ) : null}
+            {status === "config" || status === "error" ? (
+              <p className="mb-5 border border-[#f2f2ee]/35 px-4 py-3 text-[11px] uppercase tracking-[0.05em] text-[#f2f2ee]/90">
+                Message could not be sent right now. Please email me directly.
+              </p>
+            ) : null}
+
             <form
-              name="contact"
               method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              action="/contact"
+              action="/api/contact"
+              encType="multipart/form-data"
               className="w-full max-w-[760px]"
             >
-              <input type="hidden" name="form-name" value="contact" />
               <p className="hidden">
                 <label>
-                  Don’t fill this out if you’re human: <input name="bot-field" />
+                  Do not fill this out if you are human: <input name="bot-field" tabIndex={-1} autoComplete="off" />
                 </label>
               </p>
 
