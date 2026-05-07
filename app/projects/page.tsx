@@ -3,7 +3,53 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { projects as projectItems } from "./projects-data"
+const mobileProjects = [
+  {
+    id: "01",
+    title: "EXCENTRIEK",
+    meta: "VINYL / IDENTITY",
+    place: "ANTWERP",
+    year: "2025",
+    href: "/projects/project-1",
+    image: "/project-1.jpg",
+  },
+  {
+    id: "02",
+    title: "MIDNIGHT MIRAGE",
+    meta: "EDITORIAL",
+    place: "BRUSSELS",
+    year: "2025",
+    href: "/projects/project-2",
+    image: "/project2.jpg",
+  },
+  {
+    id: "03",
+    title: "VISUAL SCORE",
+    meta: "VISUAL SYSTEM",
+    place: "ANTWERP",
+    year: "2026",
+    href: "/projects/project-3",
+    image: "/project-4.jpg",
+  },
+  {
+    id: "04",
+    title: "AIR OF NO NATION",
+    meta: "IDENTITY SYSTEM",
+    place: "ANTWERP",
+    year: "2026",
+    href: "/projects/project-4",
+    image: "/project3.jpg",
+  },
+  {
+    id: "05",
+    title: "MESSAGE",
+    meta: "VISUAL FX",
+    place: "ANTWERP",
+    year: "2025",
+    href: "/projects/project-5",
+    image: "/portfolio-preview.jpg",
+  },
+]
 
 export default function ProjectsPage() {
   return (
@@ -11,65 +57,61 @@ export default function ProjectsPage() {
       className="relative flex min-h-[100dvh] flex-col overflow-x-hidden bg-white px-4 py-6 text-black md:px-8 md:py-8"
       style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
     >
-      {/* Mobile-only hero */}
-      <div className="mobile-only relative z-40 mx-auto w-full max-w-[1600px] px-4">
-        <div className="mobile-hero bg-white/0 py-6">
-          <h1 className="mobile-hero-title text-[28px] font-black uppercase leading-tight tracking-tight">
-            Projects
+      {/* Mobile-only editorial index */}
+      <section className="md:hidden min-h-[100dvh] bg-white px-0 py-0 text-black">
+        <header className="flex items-end justify-between border-b border-black/30 py-2">
+          <h1 className="text-[26px] font-black uppercase leading-none tracking-[-0.04em]">
+            PROJECTS
           </h1>
+          <p className="text-[10px] font-bold uppercase leading-none tracking-[-0.01em] text-black/70">
+            {mobileProjects.length} Results
+          </p>
+        </header>
+
+        <div className="pb-2">
+          {mobileProjects.map((project, index) => (
+            <Link
+              key={project.id}
+              href={project.href}
+              className={`grid grid-cols-[42%_1fr] gap-3 border-t border-black/30 py-3 ${index === mobileProjects.length - 1 ? "border-b" : ""}`}
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-black">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="42vw"
+                  loading="eager"
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="min-w-0 pt-0.5">
+                <p className="text-[10px] font-bold uppercase leading-[1.1] tracking-[-0.01em] text-black/70">
+                  {project.meta}
+                </p>
+                <p className="mt-0.5 text-[10px] font-bold uppercase leading-[1.1] tracking-[-0.01em] text-black/70">
+                  {project.place} · {project.year}
+                </p>
+                <h2 className="mt-1.5 pr-1 text-[16px] font-black uppercase leading-[0.98] tracking-[-0.03em] break-words">
+                  {project.title}
+                </h2>
+              </div>
+            </Link>
+          ))}
         </div>
-      </div>
+      </section>
 
       {/* Desktop hero (unchanged) */}
-      <h1 className="desktop-only pointer-events-none relative z-40 mx-auto w-full max-w-[1600px] flex-col justify-between pl-[6%] text-[clamp(2.8rem,16vw,5.6rem)] font-black uppercase leading-[0.76] tracking-[-0.065em] md:h-[84vh] md:pl-[8%] md:text-[clamp(3.2rem,15vw,11rem)]">
+      <h1 className="pointer-events-none relative z-40 mx-auto hidden w-full max-w-[1600px] flex-col justify-between pl-[6%] text-[clamp(2.8rem,16vw,5.6rem)] font-black uppercase leading-[0.76] tracking-[-0.065em] md:flex md:h-[84vh] md:pl-[8%] md:text-[clamp(3.2rem,15vw,11rem)]">
         <span className="block">PRO</span>
         <span className="block md:pl-[35%]">JEC</span>
         <span className="block md:pl-[66%]">TS</span>
       </h1>
 
-      <section className="mobile-only relative z-30 mt-8 grid gap-4">
-        {projectItems.map((project) => (
-          <Link
-            key={project.id}
-            href={project.href}
-            className="block overflow-hidden border border-black/10 bg-white"
-          >
-            <div className="relative aspect-[4/3] w-full bg-neutral-100">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="100vw"
-                loading="eager"
-                className="object-cover"
-              />
-            </div>
-
-            <div className="space-y-1 border-t border-black/10 px-4 py-3">
-              <div className="flex items-start justify-between gap-4">
-                <h2 className="text-[15px] font-black uppercase leading-[0.95] tracking-[-0.04em]">
-                  {project.title}
-                </h2>
-                <span className="shrink-0 text-[11px] font-bold uppercase leading-none">
-                  {project.year}
-                </span>
-              </div>
-
-              <p className="text-[11px] font-bold uppercase leading-[1] tracking-[-0.02em]">
-                {project.meta}
-              </p>
-
-              <p className="max-w-[95%] text-[13px] leading-[1.2] tracking-[-0.02em] text-black/75">
-                {project.place}
-              </p>
-            </div>
-          </Link>
-        ))}
-      </section>
-
       <Link
         href="/projects/project-1"
-        className="desktop-only pointer-events-auto absolute bottom-[4%] left-[14%] z-10 w-[clamp(290px,26vw,410px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995]"
+        className="pointer-events-auto absolute bottom-[4%] left-[14%] z-10 hidden w-[clamp(290px,26vw,410px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995] md:block"
       >
         <div className="w-full">
           <Image
@@ -87,7 +129,7 @@ export default function ProjectsPage() {
 
       <Link
         href="/projects/project-2"
-        className="desktop-only pointer-events-auto absolute left-[46%] top-[8%] z-10 w-[clamp(240px,32vw,460px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995]"
+        className="pointer-events-auto absolute left-[46%] top-[8%] z-10 hidden w-[clamp(240px,32vw,460px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995] md:block"
       >
         <div className="relative aspect-[16/9] w-full overflow-hidden">
           <Image
@@ -104,7 +146,7 @@ export default function ProjectsPage() {
 
       <Link
         href="/projects/project-3"
-        className="desktop-only pointer-events-auto absolute left-[1%] top-[40px] z-0 w-[clamp(350px,32vw,520px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995]"
+        className="pointer-events-auto absolute left-[1%] top-[40px] z-0 hidden w-[clamp(350px,32vw,520px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995] md:block"
       >
         <div className="relative aspect-[3/4] w-full overflow-hidden">
           <Image
@@ -121,7 +163,7 @@ export default function ProjectsPage() {
 
       <Link
         href="/projects/project-4"
-        className="desktop-only pointer-events-auto absolute right-[6%] top-[28%] z-10 w-[clamp(240px,18vw,320px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995]"
+        className="pointer-events-auto absolute right-[6%] top-[28%] z-10 hidden w-[clamp(240px,18vw,320px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995] md:block"
       >
         <div className="relative aspect-[3/4] w-full overflow-hidden">
           <Image
@@ -138,7 +180,7 @@ export default function ProjectsPage() {
 
       <Link
         href="/projects/project-5"
-        className="desktop-only absolute bottom-[9%] left-[46%] z-20 w-[clamp(240px,24vw,420px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995]"
+        className="absolute bottom-[9%] left-[46%] z-20 hidden w-[clamp(240px,24vw,420px)] cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.015] active:scale-[0.995] md:block"
       >
         <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100">
           <Image
@@ -153,7 +195,7 @@ export default function ProjectsPage() {
         </div>
       </Link>
 
-      <nav className="relative z-20 mt-8 flex flex-wrap gap-x-4 gap-y-2 text-[13px] font-bold uppercase leading-[1] md:absolute md:bottom-3 md:left-3 md:mt-0 md:flex-col md:gap-y-1 md:text-[12px] md:bottom-4 md:left-4">
+      <nav className="relative z-20 hidden mt-8 flex-wrap gap-x-4 gap-y-2 text-[13px] font-bold uppercase leading-[1] md:absolute md:bottom-4 md:left-4 md:mt-0 md:flex md:flex-col md:gap-y-1 md:text-[12px]">
         <Link href="/" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
           Home
         </Link>
@@ -170,26 +212,6 @@ export default function ProjectsPage() {
           Contact
         </Link>
       </nav>
-
-      <style jsx>{`
-        @media (max-width: 767px) {
-          .desktop-only {
-            display: none !important;
-          }
-          .mobile-only {
-            display: flex !important;
-          }
-        }
-        
-        @media (min-width: 768px) {
-          .mobile-only {
-            display: none !important;
-          }
-          .desktop-only {
-            display: flex !important;
-          }
-        }
-      `}</style>
     </main>
   )
 }

@@ -1,158 +1,145 @@
-'use client'
+"use client"
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { projects as projectItems } from '@/app/projects/projects-data'
+import Image from "next/image"
+import Link from "next/link"
 
 export default function EditorialHome() {
 	return (
-		<>
-			<style>{`
-				@media (max-width: 767px) {
-					.editorial-home-desktop-only {
-						display: none !important;
-					}
-					.editorial-home-mobile-only {
-						display: flex !important;
-					}
-				}
-				
-				@media (min-width: 768px) {
-					.editorial-home-mobile-only {
-						display: none !important;
-					}
-					.editorial-home-desktop-only {
-						display: flex !important;
-					}
-				}
-				
-				@media (max-width: 768px) {
-					.editorial-home-line {
-						animation: editorial-home-float 4s ease-in-out infinite alternate;
-					}
-				}
-
-				@keyframes editorial-home-float {
-					0% {
-						transform: translateX(0);
-					}
-					100% {
-						transform: translateX(8px);
-					}
-				}
-
-				@media (prefers-reduced-motion: reduce) {
-					.editorial-home-line {
-						animation: none !important;
-						transition: none !important;
-						transform: none !important;
-					}
-				}
-			`}</style>
-			<main
-				className="relative min-h-[100dvh] overflow-x-hidden bg-white px-4 pb-6 pt-5 text-black md:h-screen md:px-0 md:pb-0 md:pt-0 md:overflow-hidden"
-				style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
-			>
-				{/* MOBILE VERSION: Archive-style minimal */}
-				<div className="editorial-home-mobile-only flex flex-col h-[100dvh]">
-					<div className="mb-6">
-						<p className="text-[13px] font-bold uppercase leading-[1.4] tracking-[-0.02em]">
-							I'M ROBIN, A VISUAL DESIGN STUDENT WORKING ACROSS BRANDING, WEB DESIGN, EDITORIAL DESIGN, PRINT, VISUAL SYSTEMS AND IMAGE-MAKING.
-						</p>
-					</div>
-					<div className="flex-1 flex flex-col">
-						<h2 className="mb-4 text-[20px] font-black uppercase leading-tight">PROJECTS</h2>
-						<nav className="space-y-2">
-							{projectItems.map((project) => (
-								<Link key={project.id} href={project.href} className="block text-[14px] font-bold uppercase leading-tight hover:text-black/60 transition-colors">
-									{project.title}
-								</Link>
-							))}
-						</nav>
-					</div>
-					<nav className="mt-8 flex flex-wrap gap-x-3 gap-y-2 text-[11px] font-bold uppercase leading-[1] border-t border-black/10 pt-4">
-						<Link href="/" className="px-2 py-2 hover:text-black/60">Home</Link>
-						<Link href="/about" className="px-2 py-2 hover:text-black/60">About</Link>
-						<a href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/" target="_blank" rel="noopener noreferrer" className="px-2 py-2 hover:text-black/60">LinkedIn</a>
-						<a href="https://www.instagram.com/robin-bruyninck/" target="_blank" rel="noopener noreferrer" className="px-2 py-2 hover:text-black/60">Instagram</a>
-						<Link href="/contact" className="px-2 py-2 hover:text-black/60">Contact</Link>
-					</nav>
-				</div>
-
-				{/* DESKTOP VERSION: Original layout */}
-				<h1
-					className="editorial-home-desktop-only group flex relative z-20 w-full max-w-full text-left text-[clamp(2.5rem,12vw,4.8rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.04em] md:absolute md:left-0 md:right-0 md:top-0 md:px-1 md:text-[clamp(40px,4.2vw,76px)] md:flex-col md:justify-between"
-					style={{ wordSpacing: "0.18em" }}
-				>
-					<span
-						className="editorial-home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[8px]"
-						style={{ animationDelay: "0ms" }}
-					>
-						<span className="whitespace-normal md:whitespace-nowrap">I'M ROBIN,</span>
-						<span className="whitespace-normal md:whitespace-nowrap">A VISUAL DESIGN</span>
-						<span className="whitespace-normal md:whitespace-nowrap">STUDENT</span>
-					</span>
-					<span
-						className="editorial-home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out delay-75 md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[-6px]"
-						style={{ animationDelay: "140ms" }}
-					>
-						<span className="whitespace-normal md:whitespace-nowrap">WORKING ACROSS</span>
-						<span className="whitespace-normal md:whitespace-nowrap">BRANDING, WEB</span>
-					</span>
-					<span
-						className="editorial-home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out delay-100 md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[7px]"
-						style={{ animationDelay: "280ms" }}
-					>
-						<span className="whitespace-normal md:whitespace-nowrap">DESIGN,</span>
-						<span className="whitespace-normal md:whitespace-nowrap">EDITORIAL</span>
-						<span className="whitespace-normal md:whitespace-nowrap">DESIGN,</span>
-					</span>
-					<span
-						className="editorial-home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out delay-150 md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[-5px]"
-						style={{ animationDelay: "420ms" }}
-					>
-						<span className="whitespace-normal md:whitespace-nowrap">PRINT,</span>
-						<span className="whitespace-normal md:whitespace-nowrap">VISUAL SYSTEMS</span>
-						<span className="whitespace-normal md:whitespace-nowrap">AND</span>
-					</span>
-					<span
-						className="editorial-home-line block w-full transition-transform duration-500 ease-out delay-200 group-hover:translate-x-[9px]"
-						style={{ animationDelay: "560ms" }}
-					>
-						IMAGE-MAKING.
-					</span>
-				</h1>
-
-				<figure className="editorial-home-desktop-only relative mx-auto mt-8 h-[clamp(300px,55vw,420px)] w-full max-w-[100%] overflow-hidden bg-neutral-200 md:absolute md:bottom-0 md:left-[44%] md:z-10 md:mt-0 md:max-w-none md:h-[76vh] md:w-[clamp(320px,34vw,500px)]">
+		<main
+			className="relative h-[100dvh] overflow-hidden bg-white px-4 py-4 text-black md:h-screen md:px-0 md:py-0"
+			style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
+		>
+			<section className="flex h-full flex-col gap-3 overflow-hidden md:hidden">
+				<figure className="relative h-[32dvh] w-full overflow-hidden bg-neutral-200">
 					<Image
 						src="/IMG22.jpg"
 						alt="Robin portrait"
-						width={900}
-						height={1200}
+						fill
+						sizes="100vw"
 						priority
-						sizes="(max-width: 768px) 100vw, 500px"
-						className="h-full w-full object-cover object-center grayscale"
+						className="object-cover object-center grayscale"
 					/>
 				</figure>
 
-				<nav className="editorial-home-desktop-only flex relative z-20 mt-8 flex-wrap gap-x-3 gap-y-2 text-[12px] font-bold uppercase leading-[1] md:absolute md:bottom-3 md:left-3 md:mt-0 md:flex-col md:gap-y-1 md:gap-x-0 md:text-[12px] md:bottom-4 md:left-4">
-					<Link href="/projects" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
+				<h1 className="text-[clamp(2.4rem,14vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.04em]">
+					ROBIN
+				</h1>
+
+				<p className="max-w-full text-[12px] font-bold uppercase leading-[1.1] tracking-[-0.02em]">
+					I'M ROBIN, A VISUAL DESIGN STUDENT WORKING ACROSS BRANDING, WEB DESIGN, EDITORIAL DESIGN, PRINT, VISUAL SYSTEMS AND IMAGE-MAKING.
+				</p>
+
+				<nav className="mt-auto grid grid-cols-2 gap-2 pb-1 text-[11px] font-bold uppercase leading-none tracking-[-0.01em]">
+					<Link href="/projects" className="flex min-h-10 items-center border border-black px-3">
 						Projects
 					</Link>
-					<Link href="/about" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
+					<Link href="/about" className="flex min-h-10 items-center border border-black px-3">
 						About
 					</Link>
-					<a href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/" target="_blank" rel="noopener noreferrer" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
-						LinkedIn
-					</a>
-					<a href="https://www.instagram.com/robin-bruyninck/" target="_blank" rel="noopener noreferrer" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
-						Instagram
-					</a>
-					<Link href="/contact" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
+					<Link href="/contact" className="flex min-h-10 items-center border border-black px-3">
 						Contact
 					</Link>
+					<a
+						href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="flex min-h-10 items-center border border-black px-3"
+					>
+						LinkedIn
+					</a>
+					<a
+						href="https://www.instagram.com/robin-bruyninck/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="col-span-2 flex min-h-10 items-center border border-black px-3"
+					>
+						Instagram
+					</a>
 				</nav>
-			</main>
-		</>
+			</section>
+
+			<h1
+				className="group relative z-20 hidden w-full max-w-full text-left text-[clamp(2.5rem,12vw,4.8rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.04em] md:absolute md:left-0 md:right-0 md:top-0 md:flex md:px-1 md:text-[clamp(40px,4.2vw,76px)] md:flex-col md:justify-between"
+				style={{ wordSpacing: "0.18em" }}
+			>
+				<span
+					className="home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[8px]"
+					style={{ animationDelay: "0ms" }}
+				>
+					<span className="whitespace-normal md:whitespace-nowrap">I'M ROBIN,</span>
+					<span className="whitespace-normal md:whitespace-nowrap">A VISUAL DESIGN</span>
+					<span className="whitespace-normal md:whitespace-nowrap">STUDENT</span>
+				</span>
+				<span
+					className="home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out delay-75 md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[-6px]"
+					style={{ animationDelay: "140ms" }}
+				>
+					<span className="whitespace-normal md:whitespace-nowrap">WORKING ACROSS</span>
+					<span className="whitespace-normal md:whitespace-nowrap">BRANDING, WEB</span>
+				</span>
+				<span
+					className="home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out delay-100 md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[7px]"
+					style={{ animationDelay: "280ms" }}
+				>
+					<span className="whitespace-normal md:whitespace-nowrap">DESIGN,</span>
+					<span className="whitespace-normal md:whitespace-nowrap">EDITORIAL</span>
+					<span className="whitespace-normal md:whitespace-nowrap">DESIGN,</span>
+				</span>
+				<span
+					className="home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out delay-150 md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[-5px]"
+					style={{ animationDelay: "420ms" }}
+				>
+					<span className="whitespace-normal md:whitespace-nowrap">PRINT,</span>
+					<span className="whitespace-normal md:whitespace-nowrap">VISUAL SYSTEMS</span>
+					<span className="whitespace-normal md:whitespace-nowrap">AND</span>
+				</span>
+				<span
+					className="home-line block w-full transition-transform duration-500 ease-out delay-200 group-hover:translate-x-[9px]"
+					style={{ animationDelay: "560ms" }}
+				>
+					IMAGE-MAKING.
+				</span>
+			</h1>
+
+			<figure className="relative mx-auto hidden mt-8 h-[clamp(300px,55vw,420px)] w-full max-w-[100%] overflow-hidden bg-neutral-200 md:absolute md:bottom-0 md:left-[44%] md:z-10 md:mt-0 md:block md:max-w-none md:h-[76vh] md:w-[clamp(320px,34vw,500px)]">
+				<Image
+					src="/IMG22.jpg"
+					alt="Robin portrait"
+					width={900}
+					height={1200}
+					priority
+					sizes="(max-width: 768px) 100vw, 500px"
+					className="h-full w-full object-cover object-center grayscale"
+				/>
+			</figure>
+
+			<nav className="relative z-20 hidden mt-8 flex-wrap gap-x-3 gap-y-2 text-[12px] font-bold uppercase leading-[1] md:absolute md:bottom-4 md:left-4 md:mt-0 md:flex md:flex-col md:gap-x-0 md:gap-y-1 md:text-[12px]">
+				<Link href="/projects" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
+					Projects
+				</Link>
+				<Link href="/about" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
+					About
+				</Link>
+				<a
+					href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="px-2 py-2 hover:text-black md:px-0 md:py-0"
+				>
+					LinkedIn
+				</a>
+				<a
+					href="https://www.instagram.com/robin-bruyninck/"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="px-2 py-2 hover:text-black md:px-0 md:py-0"
+				>
+					Instagram
+				</a>
+				<Link href="/contact" className="px-2 py-2 hover:text-black md:px-0 md:py-0">
+					Contact
+				</Link>
+			</nav>
+		</main>
 	)
 }
