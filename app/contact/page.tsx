@@ -56,15 +56,9 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
 
             <form
               method="POST"
-              action="/api/contact"
-              encType="multipart/form-data"
+              action="https://formspree.io/f/YOUR_FORM_ID"
               className="w-full max-w-[760px]"
             >
-              <p className="hidden">
-                <label>
-                  Do not fill this out if you are human: <input name="bot-field" tabIndex={-1} autoComplete="off" />
-                </label>
-              </p>
 
               <p className="mb-3 text-[13px] font-semibold uppercase tracking-[0.05em] text-[#f2f2ee]">
                 Name (required)
