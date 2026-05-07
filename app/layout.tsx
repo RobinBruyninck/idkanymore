@@ -1,13 +1,14 @@
 import { AppToaster } from "../components/ui/toast"
 
+import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import GoogleAnalyticsTracker from "../components/GoogleAnalyticsTracker"
 
 import "./globals.css"
 
 export const metadata = {
-  title: "Excentriek Studios",
-  description: "Portfolio website for Excentriek Studios",
+  title: "Studio Excentriek",
+  description: "Portfolio website for Studio Excentriek",
   icons: {
     icon: "/favicon.ico?v=2",
   },
@@ -50,6 +51,8 @@ export default function RootLayout({
         </div>
 
         <AppToaster />
+
+        <Analytics />
       </body>
     </html>
   )
