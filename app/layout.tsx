@@ -1,6 +1,7 @@
 import { AppToaster } from "../components/ui/toast"
 
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from "next/script"
 import GoogleAnalyticsTracker from "../components/GoogleAnalyticsTracker"
 
@@ -53,6 +54,7 @@ export default function RootLayout({
         <AppToaster />
 
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
