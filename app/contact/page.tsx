@@ -43,7 +43,7 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
         } else {
           alert("Error: " + data.message)
         }
-      } catch (error) {
+      } catch {
         alert("Something went wrong. Please try again.")
       } finally {
         submitBtn.textContent = originalText

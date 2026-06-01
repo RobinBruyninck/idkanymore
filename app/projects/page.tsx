@@ -233,7 +233,7 @@ export default function ProjectsPage() {
         <a href="https://www.linkedin.com/in/robin-bruyninckx-ba01b6294/" target="_blank" rel="noopener noreferrer" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
           LinkedIn
         </a>
-        <a href="https://www.instagram.com/robin-bruyninck/" target="_blank" rel="noopener noreferrer" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
+        <a href="https://www.instagram.com/robinbruyninck/" target="_blank" rel="noopener noreferrer" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
           Instagram
         </a>
         <Link href="/contact" className="px-1 py-1.5 hover:text-black md:px-0 md:py-0">
