@@ -1,51 +1,91 @@
-// pages/cookie-settings.js
-export default function CookieSettings() {
-  return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Cookie Settings</h1>
-     
-      <div className="space-y-6">
+"use client"
 
-        <p className="mb-6 text-gray-600">
-          We use cookies to enhance your experience on our website, analyze site traffic, and provide personalized content. Some cookies are essential for the site to function, while others help us improve your experience.
+import Link from "next/link"
+import { useState } from "react"
+import { setStoredConsent, useConsent } from "@/lib/consent"
+
+export default function CookieSettings() {
+  const consent = useConsent()
+  const [saved, setSaved] = useState(false)
+
+  const apply = (value) => {
+    setStoredConsent(value)
+    setSaved(true)
+  }
+
+  const statusLabel =
+    consent === "accepted"
+      ? "Analytics cookies are ON"
+      : consent === "rejected"
+        ? "Analytics cookies are OFF"
+        : "No choice made yet"
+
+  return (
+    <main
+      className="min-h-[100dvh] bg-white px-5 pb-24 pt-8 text-black md:px-10 md:pt-10"
+      style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
+    >
+      <section className="mx-auto w-full max-w-[820px]">
+        <Link
+          href="/"
+          className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] hover:text-black/70"
+        >
+          ← Back to home
+        </Link>
+
+        <h1 className="mt-7 text-[clamp(2rem,5vw,3.4rem)] font-black uppercase leading-[0.92] tracking-[-0.03em]">
+          Cookie settings
+        </h1>
+
+        <p className="mt-5 max-w-[640px] text-[13px] leading-[1.6] text-black/75">
+          Essential functionality on this site works without cookies. Analytics cookies (Google
+          Analytics) are only used if you accept them, and help understand how the portfolio is used.
+          Visitor metrics from Vercel are collected without cookies.
         </p>
 
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-2">Essential Cookies</h2>
-            <p className="text-gray-600">
-              These cookies are necessary for the website to function and cannot be turned off. They ensure basic functionalities such as page navigation, security, and access to secure areas of the site.
-            </p>
-          </div>
-
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-2">Performance & Analytics Cookies</h2>
-            <p className="text-gray-600">
-              These cookies help us understand how visitors interact with our website, allowing us to improve performance and provide a better user experience.
-            </p>
-          </div>
-
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-2">Functional Cookies</h2>
-            <p className="text-gray-600">
-              Functional cookies enable enhanced features and personalization, such as remembering your preferences or login information.
-            </p>
-          </div>
-
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-2">Advertising & Targeting Cookies</h2>
-            <p className="text-gray-600">
-              These cookies are used to deliver relevant advertisements based on your interests and browsing behavior. They may also limit the number of times you see an ad and help measure ad campaign effectiveness.
-            </p>
-          </div>
-
+        <div className="mt-7 border border-black/15 px-5 py-4 text-[12px] uppercase tracking-[0.06em] text-black/80">
+          Current status: <span className="font-semibold text-black">{statusLabel}</span>
         </div>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-4">
-          <button className="flex-1 bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition">Accept All</button>
-          <button className="flex-1 bg-gray-200 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-300 transition">Reject Non-Essential</button>
-          <button className="flex-1 bg-yellow-500 text-white font-semibold py-3 rounded-lg hover:bg-yellow-600 transition">Customize Settings</button>
-        </div>
-    </div>
+        <div className="mt-6 space-y-5">
+          <div className="border-b border-black/10 pb-4">
+            <h2 className="text-[13px] font-semibold uppercase tracking-[0.05em]">Essential cookies</h2>
+            <p className="mt-1 text-[12px] leading-[1.5] text-black/65">
+              Always on. Needed for basic page functionality and security. These cannot be turned off.
+            </p>
+          </div>
 
+          <div className="pb-2">
+            <h2 className="text-[13px] font-semibold uppercase tracking-[0.05em]">Analytics cookies</h2>
+            <p className="mt-1 text-[12px] leading-[1.5] text-black/65">
+              Optional. Google Analytics, loaded only after you accept.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          <button
+            type="button"
+            onClick={() => apply("accepted")}
+            className="h-11 flex-1 border border-black bg-black px-6 text-[12px] font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-transparent hover:text-black"
+          >
+            Accept analytics
+          </button>
+          <button
+            type="button"
+            onClick={() => apply("rejected")}
+            className="h-11 flex-1 border border-black px-6 text-[12px] font-semibold uppercase tracking-[0.06em] text-black transition hover:bg-black hover:text-white"
+          >
+            Reject analytics
+          </button>
+        </div>
+
+        {saved ? (
+          <p className="mt-4 text-[12px] uppercase tracking-[0.06em] text-black/70">
+            Saved. Your choice is stored on this device.
+          </p>
+        ) : null}
+      </section>
+    </main>
   )
 }

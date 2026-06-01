@@ -1,64 +1,60 @@
-// pages/terms-of-agreement.js
+import Link from "next/link"
+
+const sections = [
+  {
+    title: "Acceptance of terms",
+    body: "By using this website you agree to be bound by these terms, as well as any additional guidelines posted on the site.",
+  },
+  {
+    title: "Use of the site",
+    body: "This is a personal portfolio. You may browse the work freely. Please do not use the site for unlawful purposes or attempt to disrupt its operation.",
+  },
+  {
+    title: "Intellectual property",
+    body: "All design work, images and text on this site belong to Robin Bruyninckx unless otherwise stated. They may not be copied, distributed or modified without permission.",
+  },
+  {
+    title: "Limitation of liability",
+    body: "The site is provided as is. We are not liable for any damages arising from its use, including direct, indirect or consequential losses.",
+  },
+  {
+    title: "Changes to these terms",
+    body: "These terms may be updated at any time. Continued use of the site after changes constitutes acceptance of the updated terms.",
+  },
+]
+
 export default function TermsOfAgreement() {
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Terms of Agreement</h1>
-          
-        <p className="mb-6 text-gray-600">
-          Please read these Terms of Agreement carefully before using our website or services. By accessing or using our site, you agree to comply with these terms and conditions.
+    <main
+      className="min-h-[100dvh] bg-white px-5 pb-24 pt-8 text-black md:px-10 md:pt-10"
+      style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
+    >
+      <section className="mx-auto w-full max-w-[820px]">
+        <Link
+          href="/"
+          className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] hover:text-black/70"
+        >
+          ← Back to home
+        </Link>
+
+        <h1 className="mt-7 text-[clamp(2rem,5vw,3.4rem)] font-black uppercase leading-[0.92] tracking-[-0.03em]">
+          Terms of agreement
+        </h1>
+
+        <p className="mt-5 max-w-[640px] text-[13px] leading-[1.6] text-black/75">
+          Please read these terms before using this website. By accessing the site you agree to comply
+          with them.
         </p>
 
-        <div className="space-y-6">
-
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-2">Acceptance of Terms</h2>
-            <p className="text-gray-600">
-              By using our website, you agree to be bound by these Terms of Agreement, as well as any additional terms, policies, or guidelines posted on the site.
-            </p>
-          </div>
-
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-2">User Responsibilities</h2>
-            <p className="text-gray-600">
-              Users must provide accurate information, respect the rights of others, and refrain from using the site for unlawful purposes. Any violation may result in suspension or termination of access.
-            </p>
-          </div>
-
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-2">Account Registration</h2>
-            <p className="text-gray-600">
-              Some features may require account registration. You are responsible for maintaining the confidentiality of your account credentials and for all activities conducted under your account.
-            </p>
-          </div>
-
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-2">Intellectual Property</h2>
-            <p className="text-gray-600">
-              All content on this site is protected by copyright, trademark, or other intellectual property laws. Users may not copy, distribute, or modify content without proper authorization.
-            </p>
-          </div>
-
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-2">Limitation of Liability</h2>
-            <p className="text-gray-600">
-              We are not liable for any damages arising from the use of this website or services, including direct, indirect, incidental, or consequential losses.
-            </p>
-          </div>
-
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-2">Modifications of Terms</h2>
-            <p className="text-gray-600">
-              We reserve the right to update or modify these Terms of Agreement at any time. Continued use of the site after changes constitutes acceptance of the updated terms.
-            </p>
-          </div>
-
+        <div className="mt-8 space-y-6">
+          {sections.map((section) => (
+            <div key={section.title} className="border-t border-black/10 pt-4">
+              <h2 className="text-[13px] font-semibold uppercase tracking-[0.05em]">{section.title}</h2>
+              <p className="mt-1.5 max-w-[640px] text-[12px] leading-[1.6] text-black/70">{section.body}</p>
+            </div>
+          ))}
         </div>
-
-        <div className="mt-8 flex flex-col sm:flex-row gap-4">
-          <button className="flex-1 bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition">Accept Terms</button>
-          <button className="flex-1 bg-gray-200 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-300 transition">Decline</button>
-        </div>
-
-    </div>
+      </section>
+    </main>
   )
 }
