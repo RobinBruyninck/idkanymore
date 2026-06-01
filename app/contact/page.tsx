@@ -1,59 +1,41 @@
 'use client'
 
-import { useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
+import { toast } from "@/components/ui/toast"
 
-type ContactPageProps = {
-  searchParams?: {
-    status?: string
-  }
-}
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit"
+const WEB3FORMS_ACCESS_KEY = "69b70554-737d-4952-b191-7673f9fe7054"
 
-export default function ContactPage({ searchParams }: ContactPageProps) {
-  const status = searchParams?.status
+export default function ContactPage() {
+  const [submitting, setSubmitting] = useState(false)
 
-  useEffect(() => {
-    const form = document.getElementById('contact-form') as HTMLFormElement
-    if (!form) return
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const form = event.currentTarget
+    const formData = new FormData(form)
 
-    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+    setSubmitting(true)
+    try {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      })
+      const data = await response.json()
 
-    const handleSubmit = async (e: Event) => {
-      if (e instanceof SubmitEvent) {
-        e.preventDefault()
+      if (response.ok && data.success) {
+        toast.success("Thanks — your message has been sent.")
+        form.reset()
+      } else {
+        toast.error(data.message || "Message could not be sent. Please email me directly.")
       }
-
-      const formData = new FormData(form)
-      const originalText = submitBtn.textContent
-
-      submitBtn.textContent = "Sending..."
-      submitBtn.disabled = true
-
-      try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: formData
-        })
-
-        const data = await response.json()
-
-        if (response.ok) {
-          alert("Success! Your message has been sent.")
-          form.reset()
-        } else {
-          alert("Error: " + data.message)
-        }
-      } catch (error) {
-        alert("Something went wrong. Please try again.")
-      } finally {
-        submitBtn.textContent = originalText
-        submitBtn.disabled = false
-      }
+    } catch {
+      toast.error("Something went wrong. Please try again or email me directly.")
+    } finally {
+      setSubmitting(false)
     }
-
-    form.addEventListener('submit', handleSubmit)
-    return () => form.removeEventListener('submit', handleSubmit)
-  }, [])
+  }
 
   return (
     <main
@@ -84,29 +66,25 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
           </div>
 
           <div className="md:col-span-8">
-            {status === "sent" ? (
-              <p className="mb-5 border border-[#f2f2ee]/35 px-4 py-3 text-[11px] uppercase tracking-[0.05em] text-[#f2f2ee]/90">
-                Thanks, your message has been sent.
-              </p>
-            ) : null}
-            {status === "invalid" ? (
-              <p className="mb-5 border border-[#f2f2ee]/35 px-4 py-3 text-[11px] uppercase tracking-[0.05em] text-[#f2f2ee]/90">
-                Please fill in all required fields.
-              </p>
-            ) : null}
-            {status === "config" || status === "error" ? (
-              <p className="mb-5 border border-[#f2f2ee]/35 px-4 py-3 text-[11px] uppercase tracking-[0.05em] text-[#f2f2ee]/90">
-                Message could not be sent right now. Please email me directly.
-              </p>
-            ) : null}
-
             <form
               id="contact-form"
               method="POST"
-              action="https://api.web3forms.com/submit"
+              action={WEB3FORMS_ENDPOINT}
+              onSubmit={handleSubmit}
               className="w-full max-w-[760px]"
             >
-              <input type="hidden" name="access_key" value="69b70554-737d-4952-b191-7673f9fe7054" />
+              <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+              <input type="hidden" name="subject" value="New message from your portfolio" />
+              {/* Honeypot — Web3Forms silently drops submissions where this is filled. */}
+              <input
+                type="checkbox"
+                name="botcheck"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+                style={{ display: "none" }}
+              />
 
               <label className="block">
                 <span className="mb-1 block text-[13px] font-semibold uppercase tracking-[0.05em] text-[#f2f2ee]">
@@ -146,9 +124,10 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
 
               <button
                 type="submit"
-                className="mt-8 h-11 w-full border border-[#f2f2ee] bg-[#f2f2ee] px-8 text-[12px] font-semibold uppercase tracking-[0.06em] text-[#0d0d0d] transition hover:bg-transparent hover:text-[#f2f2ee] sm:w-auto"
+                disabled={submitting}
+                className="mt-8 h-11 w-full border border-[#f2f2ee] bg-[#f2f2ee] px-8 text-[12px] font-semibold uppercase tracking-[0.06em] text-[#0d0d0d] transition hover:bg-transparent hover:text-[#f2f2ee] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
               >
-                EMAIL ME
+                {submitting ? "Sending..." : "EMAIL ME"}
               </button>
             </form>
           </div>

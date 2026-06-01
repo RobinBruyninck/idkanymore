@@ -76,7 +76,7 @@ export default function EditorialHome() {
 					className="home-line flex w-full flex-col gap-0.5 transition-transform duration-500 ease-out md:gap-1 md:flex-row md:items-baseline md:justify-between group-hover:translate-x-[8px]"
 					style={{ animationDelay: "0ms" }}
 				>
-					<span className="whitespace-normal md:whitespace-nowrap">I'M ROBIN,</span>
+					<span className="whitespace-normal md:whitespace-nowrap">I&apos;M ROBIN,</span>
 					<span className="whitespace-normal md:whitespace-nowrap">A VISUAL DESIGN</span>
 					<span className="whitespace-normal md:whitespace-nowrap">STUDENT</span>
 				</span>
@@ -139,7 +139,7 @@ export default function EditorialHome() {
 					LinkedIn
 				</a>
 				<a
-					href="https://www.instagram.com/robin-bruyninck/"
+					href="https://www.instagram.com/robinbruyninck/"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="px-2 py-2 hover:text-black md:px-0 md:py-0"

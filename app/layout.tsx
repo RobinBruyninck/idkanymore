@@ -2,8 +2,10 @@ import { AppToaster } from "../components/ui/toast"
 
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import Script from "next/script"
 import GoogleAnalyticsTracker from "../components/GoogleAnalyticsTracker"
+import GoogleAnalytics from "../components/GoogleAnalytics"
+import CookieConsent from "../components/CookieConsent"
+import Footer from "../components/Footer"
 
 import "./globals.css"
 
@@ -15,8 +17,6 @@ export const metadata = {
   },
 }
 
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-
 export default function RootLayout({
   children,
 }: {
@@ -24,32 +24,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        {gaMeasurementId ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaMeasurementId}');
-              `}
-            </Script>
-          </>
-        ) : null}
-      </head>
-
       <body>
-        {/* Google Analytics page view tracker */}
+        {/* Google Analytics — only loads after cookie consent */}
+        <GoogleAnalytics />
         <GoogleAnalyticsTracker />
 
         <div>
           {children}
         </div>
+
+        <Footer />
+        <CookieConsent />
 
         <AppToaster />
 
